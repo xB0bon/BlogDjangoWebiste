@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Post List
+{% endblock title %}
+    
+
+{% block content %}
+    
+    <section>
+        <h1 style='text-align:center;'>Post List</h1>
+        {% for post in posts %}
+            <article class='post'>
+                <h2>
+                    <a href="{% url 'posts:page' slug=post.slug %}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p>{{ post.date|date:"d-m-Y - H:i:s" }}</p>
+                <p>{{ post.body }}</p>
+            </article>
+        {% endfor %}
+    </section>
+    
+{% endblock content %}
